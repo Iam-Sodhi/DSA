@@ -54,16 +54,16 @@ void Insert_afternode(node *prevnode, int n){
 }
 
 int main()
-{	 node * first= new node(4);
-     node *second = new node(7);
-     node *third= new node(9);
-     first->next=second;
-     second->next=third;
-     third->next=NULL;
+{	 node * first= NULL;
+    //  node *second = new node(7);
+    //  node *third= new node(9);
+    //  first->next=second;
+    //  second->next=third;
+    //  third->next=NULL;
      traversal(first);
     //  //Insert at beginning
       first= Insert_first(first, 1);
-     cout<<"\nAfter inserting at end:"<<endl;
+     cout<<"\nAfter inserting at first:"<<endl;
   traversal(first);
      //Insert in between
      Insert_between(first,2,19); // here 2 is the index number
