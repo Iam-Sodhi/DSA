@@ -4,9 +4,7 @@ int partition(int *a, int low, int high)
 {
     int pivot = a[low];
     int i = low + 1;
-    int j = high;
-    int temp;
-
+    int j = high; int temp;
     do
     {
         while (a[i] <= pivot)
@@ -23,7 +21,7 @@ int partition(int *a, int low, int high)
             a[i] = a[j];
             a[j] = temp;
         }
-
+        
     } while (i < j);
     // swap a[low]and a[j]
     temp = a[j];
