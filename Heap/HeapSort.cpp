@@ -22,7 +22,7 @@ void heapify(int a[], int n, int i){
       }
    
 }
-void heapsort(int a[], int size)
+void heapsort(int a[], int size) //here size is tha last index initially
 {
     while (size > 1)
     {
@@ -40,7 +40,7 @@ int main()
     int size=n-1;//******important last element at n-1 index
     for (int i = n/2; i >=1; i--)
     {
-        heapify(arr, size,i);  //it has time complexibitly O(n)
+      heapify(arr, size,i);  //it has time complexibitly O(n)
     }
    cout<<"Printing the array(maxHeap): "<<endl;
    for (int i = 1; i <=size; i++)

@@ -12,7 +12,6 @@ void DFS(int node)
     cout << node << " ";
     visited[node] = true;
     // inorder
-
     vector<int>::iterator it;
     for (it = adj[node].begin(); it != adj[node].end(); it++)
     {

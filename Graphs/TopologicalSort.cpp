@@ -14,10 +14,9 @@ void topological_sort(int node,stack<int> &st,bool vis[]){
     {  if (!vis[*it])
     {
         topological_sort(*it,st,vis);
-        vis[*it]=true;
+        vis[*it]=true; 
     }
-    
-        
+       
     }
     st.push(node);
     
@@ -61,6 +60,7 @@ void topological_sort(int node,stack<int> &st,bool vis[]){
 //  }
 int main()
 {	int n, m;
+
     cin>>n>>m;
     
     bool vis[N]={false};

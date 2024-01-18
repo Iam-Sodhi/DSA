@@ -38,8 +38,8 @@ int celebrity(vector<vector<int>> &M, int n)
         }
         else { // b knows a  //*****if (know(M, n, b, a))  ->don't use it can give segmentation error
                                                 //as it is possible that even b does not know a but we want to push it t
-                     s.push(a);
-                 }
+          s.push(a);
+             }
     }
     // 3.Now this one element left will be the potential candidate. We will verify it.
 

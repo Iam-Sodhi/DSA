@@ -50,7 +50,7 @@ string infixtopostfix(string s){
         }
         else
         {
-            while (!sp.empty()&& prec(s[i])<prec(sp.top()))
+            while (!sp.empty()&& prec(s[i])<=prec(sp.top()))
             {
                 res+=sp.top();
                 sp.pop();

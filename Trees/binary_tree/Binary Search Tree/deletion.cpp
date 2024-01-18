@@ -31,7 +31,6 @@ node *deletion(node *root, int key)
     {
         return NULL;
     }
-    
 
     if (key < root->data)
     {
@@ -43,18 +42,20 @@ node *deletion(node *root, int key)
     }
     // Deletion if key is found
     else
-    { if (root->left==NULL)
     {
-       node* temp= root->right;
-       free(root);
-       return temp;
-    }
-     else if (root->right==NULL)
-     { node* temp=root->left;
-       free(root);
-       return temp;
-     }
-     
+        if (root->left == NULL)
+        {
+            node *temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL)
+        {
+            node *temp = root->left;
+            free(root);
+            return temp;
+        }
+
         node *ipre = precessor_inorder(root, key);
         root->data = ipre->data;
         root->left = deletion(root->left, ipre->data);
@@ -88,9 +89,9 @@ int main()
     inorder(root);
     deletion(root, 8);
     cout << endl;
-       inorder(root);
+    inorder(root);
     deletion(root, 9);
     cout << endl;
-       inorder(root);
+    inorder(root);
     return 0;
 }

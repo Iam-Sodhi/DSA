@@ -14,6 +14,8 @@ int modularExponential(int x,int n, int m){
     return res;
 }
 int main()
-{	
+{	 int x=3, n=4;
+     int m=10000;
+     cout<<modularExponential(x,n,m)<<endl;
     return 0;
 }

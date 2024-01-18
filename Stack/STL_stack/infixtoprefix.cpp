@@ -1,91 +1,98 @@
 #include <iostream>
-#include<stack>
-#include<string>
-#include<algorithm>
+#include <stack>
+#include <string>
+#include <algorithm>
 using namespace std;
-int prec(char a){
-    if (a=='^')
+int prec(char a)
+{
+    if (a == '^')
     {
         return 3;
     }
-    else if (a=='*'||a=='/')
+    else if (a == '*' || a == '/')
     {
         return 2;
     }
-    else if (a=='+'||a=='-')
+    else if (a == '+' || a == '-')
     {
-            return 1;
+        return 1;
     }
     else
     {
         return -1;
     }
-    
-    
 }
-string infixtoprefix(string s){
-      reverse(s.begin(),s.end());
-      for (int i = 0; i < s.length(); i++)
-      {
-        if (s[i]=='(')
+string infixtoprefix(string s)
+{
+    reverse(s.begin(), s.end());
+    for (int i = 0; i < s.length(); i++)
+    {
+        if (s[i] == '(')
         {
-            s[i]=')';
+            s[i] = ')';
         }
-        else if (s[i]==')')
+        else if (s[i] == ')')
         {
-            s[i]='(';
+            s[i] = '(';
         }
-        
-      }
-      
-       stack<char> sp;
-       string res;
-       for (int i = 0; i < s.length(); i++)
-       {
-        if (s[i]>='a'&&s[i]<='z'||(s[i]>='A'&&s[i]<='Z'))
+    }
+
+    stack<char> sp;
+    string res;
+    for (int i = 0; i < s.length(); i++)
+    {
+        if (s[i] >= 'a' && s[i] <= 'z' || (s[i] >= 'A' && s[i] <= 'Z'))
         {
-            res+=s[i];
+            res += s[i];
         }
-        else if (s[i]=='(')
+        else if (s[i] == '(')
         {
-           sp.push(s[i]);
+            sp.push(s[i]);
         }
-        else if (s[i]==')')
+        else if (s[i] == ')')
         {
-           
-            while (!sp.empty()&& sp.top()!='(')
+
+            while (!sp.empty() && sp.top() != '(')
             {
-                 res+=sp.top();
-            sp.pop();
+                res += sp.top();
+                sp.pop();
             }
-            if (sp.top()=='(') // to remove it
+            if (sp.top() == '(') // to remove it
             {
                 sp.pop();
             }
-            
         }
         else
         {
-            while (!sp.empty()&& prec(s[i])<prec(sp.top()))
+            if (s[i] == '^')
             {
-                res+=sp.top();
-                sp.pop();
+                while (!sp.empty() && prec(s[i]) <= prec(sp.top())) //here <= is there lile in infix to postfix
+                {
+                    res += sp.top();
+                    sp.pop();
+                }
+            }
+            else
+            {
+                while (!sp.empty() && prec(s[i]) < prec(sp.top())) // here not <= but <
+                {
+                    res += sp.top();
+                    sp.pop();
+                }
             }
             sp.push(s[i]);
         }
-        
-        
-        
-       }
-       while (!sp.empty())
-       {
-        res+=sp.top();
+    }
+    while (!sp.empty())
+    {
+        res += sp.top();
         sp.pop();
-       }
-       reverse(res.begin(),res.end());
-     return res;  
+    }
+    reverse(res.begin(), res.end());
+    return res;
 }
 int main()
-{	cout<<infixtoprefix("(a-b/c)*(a/k-l)");
+{
+    cout << infixtoprefix("(a-b/c)*(a/k-l)");
     return 0;
 }
