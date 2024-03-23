@@ -1,5 +1,7 @@
 #include <iostream>
 using namespace std;
+//Worst Case – This case occurs when the pivot is the greatest or smallest element of the array. If the partition is done and the last element is the pivot, then the worst case would be either in the increasing order of the array or in the decreasing order of the array. O(n^2)
+//Best Case – This case occurs when the pivot is the middle element or near to middle element of the array. O(nlogn)
 int partition(int *a, int low, int high)
 {
     int pivot = a[low];

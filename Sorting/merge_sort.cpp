@@ -35,7 +35,7 @@ void merge(int a[], int low, int high, int mid)
         j++;
         k++;
     }
-    for (int i = 0; i < high + 1; i++) // size of array is high +1
+    for (int i = low; i < high + 1; i++) // size of array is high +1
     {
         a[i] = b[i];
     }
